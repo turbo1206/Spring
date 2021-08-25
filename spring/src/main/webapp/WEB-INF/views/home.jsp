@@ -13,6 +13,6 @@
 <P>  The time on the server is ${serverTime}. </P>
 <p>my name is ${myName}.</p>
 <p>my homeAddress is ${homeAddress}</p>
-<p>my mobileNumber is ${mobileNumber}</p>
+<p>my mobileNumber is ${mobileNumber}</p> 
 </body>
 </html>
