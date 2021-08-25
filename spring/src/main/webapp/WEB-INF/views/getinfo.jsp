@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Get info</title>
+<title>Getinfo</title>
 </head>
 <body>
 <!-- getinfo 진입 시 나오는 내용 -->

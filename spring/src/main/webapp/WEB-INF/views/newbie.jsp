@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>newbie</title>
 </head>
 <body>
 <form method="get">
