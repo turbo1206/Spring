@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Information</title>
+<title>로그인</title>
 </head>
 <body>
-	<!-- info 출력 될 내용 -->
-	<p>${loginid}</p>
-	<p>${region}</p>
+	<form method="get" action="login"></form>
 </body>
 </html>

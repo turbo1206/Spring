@@ -46,10 +46,12 @@ public class HomeController {
 //		return "home";
 //	}
 //	
+	// getinfo로 진입
 	@RequestMapping("/getinfo")
 	public String getInfo() {
 		return "getinfo";
 	}
+	// info로 진입
 	@RequestMapping("/info")
 	public String doInfo(HttpServletRequest hsr, Model model) {
 		String uid = hsr.getParameter("userid");
@@ -60,5 +62,22 @@ public class HomeController {
 		model.addAttribute("region", addr);
 		// userid -> uid -> loginid, address -> addr -> region
 		return "viewinfo";
+	}
+	
+	@RequestMapping("/choose")
+	public String doChoose() {
+		return "choose";
+	}
+	
+	@RequestMapping("/selected")
+	public String doJob(HttpServletRequest hsr, Model model) {
+		String strPath=hsr.getParameter("path");
+		if(strPath.equals("login")) {
+			return "getinfo";
+		} else if(strPath.equals("newbie")) {
+			return "newbie";
+		} else {
+			return "choose";
+		}
 	}
 }

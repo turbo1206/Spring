@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Information</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<!-- info 출력 될 내용 -->
-	<p>${loginid}</p>
-	<p>${region}</p>
+	<a href="selected?path=login">로그인하기</a>&nbsp;&nbsp;
+	<a href="selected?path=newbie">회원가입</a>
 </body>
 </html>
