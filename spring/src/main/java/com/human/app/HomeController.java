@@ -49,10 +49,10 @@ public class HomeController {
 //		return "home";
 //	}
 //	
-//	@RequestMapping("/getinfo")
-//	public String getInfo() {
-//		return "getinfo";
-//	}
+	@RequestMapping("/getinfo")
+	public String getInfo() {
+		return "getinfo";
+	}
 //	
 //	 ../info?user_id=xaexal&address=Cheonan
 //	 ../info/xaexal/Cheonan

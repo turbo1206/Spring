@@ -13,5 +13,14 @@
 	ADDRESS : <input type="text" name="address"><br><br>
 	<input type="submit" name="전송">
 </form>
+<br>
+<% // 웹 서버 안에서 먼저 실행.
+	int i;
+	for(i=0; i<10; i++) {
+		out.println("<p>"+i+"</p>");
+	}
+%>
+<%=i %>
 </body>
+<script></script>
 </html>
