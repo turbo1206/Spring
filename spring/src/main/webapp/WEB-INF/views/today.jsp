@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Information</title>
+<title>Today</title>
 </head>
 <body>
-	<!-- info 출력 될 내용 -->
-	<p>${pl.user_id}</p>
-	<p>${pl.address}</p>
+	<p>userid: ${uid }</p>
+	<p>address: ${addr }</p>
 </body>
 </html>
