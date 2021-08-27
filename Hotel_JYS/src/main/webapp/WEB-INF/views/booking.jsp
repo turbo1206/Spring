@@ -14,9 +14,8 @@
  	<form method="get" action="goroom">
  	<input type="submit" value="객실관리">
  	</form>
-    <form method="get" action="backhome">
-	<input type="submit" value="로그아웃">
-	</form><br><br>  
+   	<a href="logout">로그아웃</a>
+	<br><br>  
     <label for="room_list">객실목록</label>
           <p>
             <textarea name="" id="room_list" cols="10" rows="20">
@@ -45,5 +44,6 @@
     <input type="button" value="삭제">
     <input type="button" value="Clear">
     </div>
+
 </body>
 </html>

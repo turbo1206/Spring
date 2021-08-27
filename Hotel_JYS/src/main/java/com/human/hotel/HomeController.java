@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public class HomeController {
 	@RequestMapping("/info")
 	public String getInfo(HttpServletRequest hsr, Model model) {
 		String uid = hsr.getParameter("userid");
-		String pw = hsr.getParameter("password");
+		String pw = hsr.getParameter("passcode");
 		model.addAttribute("loginid", uid);
 		model.addAttribute("loginpw", pw);
 		return "viewinfo";
@@ -88,4 +89,48 @@ public class HomeController {
 		return "booking";
 	}
 	
+	@RequestMapping("/login")
+	public String li() {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/check_user", method = RequestMethod.POST)
+	public String booking(HttpServletRequest hsr, Model model) {
+		String userid=hsr.getParameter("userid");
+		String passcode=hsr.getParameter("passcode");
+		
+		System.out.println("userid="+userid+",passcode="+passcode);
+		
+		HttpSession session = hsr.getSession();
+		session.setAttribute("loginid", userid);
+		
+		return "redirect:/booking"; // RequestMapping의 경로 이름
+	}
+	
+	@RequestMapping(value = "/booking", method = RequestMethod.GET)
+	public String booking(HttpServletRequest hsr) {
+		HttpSession session = hsr.getSession();
+		String loginid=(String)session.getAttribute("loginid");
+		if(!loginid.equals("")) {
+			return "booking";
+		} else {
+			return "redirect:/login"; // JSP 화일 이름
+		}
+	}
+	
+	@RequestMapping("/room")
+	public String room(HttpServletRequest hsr) {
+		HttpSession session = hsr.getSession();
+		if(session.getAttribute("loginid")==null) {
+			return "redirect:login";
+		}
+		return "room";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest hsr) {
+		HttpSession session = hsr.getSession();
+		session.invalidate();
+		return "redirect:/";
+	}
 }

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	private HttpServletRequest session;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
