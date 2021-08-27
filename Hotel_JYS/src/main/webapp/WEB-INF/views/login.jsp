@@ -4,13 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>관리자 로그인</title>
 </head>
 <body>
 	<form method="get" action="/hotel/info">
-	사용자ID: <input type="text" name="userid">
-	비밀번호: <input type="text" name="password">
-	<input type="submit" value="확인">
+	사용자ID: <input type="text" name="userid"><br>
+	비밀번호: <input type="text" name="password"><br>
+	</form>
+	<form method="get" action="/hotel/gobooking">
+	<input type="submit" value="로그인">
+	</form>
+	<form method="get" action="/hotel/backhome">
+	<input type="submit" value="취소">
 	</form>
 </body>
 </html>

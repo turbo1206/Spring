@@ -13,7 +13,12 @@
 	비밀번호: <input type="text" name="password"><br><br>
 	비밀번호 확인: <input type="text" name="password2"><br><br>
 	모바일: <input type="text" name="phonenumber"><br><br>
-	<input type="submit" value="확인">
+	</form>
+	<form method="get" action="/hotel/backlogin">
+	<input type="submit" value="회원가입">
+	</form>
+	<form method="get" action="/hotel/backhome">
+	<input type="submit" value="취소">
 	</form>
 </body>
 </html>

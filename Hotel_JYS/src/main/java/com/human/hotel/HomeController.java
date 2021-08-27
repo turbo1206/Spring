@@ -72,4 +72,20 @@ public class HomeController {
 	public String bl() {
 		return "login";
 	}
+	
+	@RequestMapping("/gobooking")
+	public String gb() {
+		return "booking";
+	}
+	
+	@RequestMapping("/goroom")
+	public String gr() {
+		return "room";
+	}
+	
+	@RequestMapping("/gomanage")
+	public String gm() {
+		return "booking";
+	}
+	
 }
