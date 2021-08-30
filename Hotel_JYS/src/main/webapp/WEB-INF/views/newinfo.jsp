@@ -17,14 +17,6 @@
 	<p>${loginpw1}</p><br>
 	모바일<br>
 	<p>${pn}</p><br>
-	<form method="get" action="backhome">
-	<input type="submit" value="돌아가기">
-	</form>
-	<form method="get" action="backhome">
-	<input type="submit" value="취소">
-	</form>
-	<form method="get" action="backlogin">
-	<input type="submit" value="로그인">
-	</form>
+	
 </body>
 </html>

@@ -7,91 +7,34 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+import com.sun.org.apache.regexp.internal.recompile;
+
 @Controller
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@RequestMapping("/")
-	public String show() {
+	public String home(Locale locale, Model m) {
 		return "home";
 	}
 	
-	@RequestMapping("/home")
-	public String home(HttpServletRequest hsr, Model model) {
-		String strPath = hsr.getParameter("path");
-		if(strPath.equals("login")) {
-			return "login";
-		} else if(strPath.equals("newbie")) {
-			return "newbie";
-		} else {
-			return "home";
-		}
-	}
-	
-	@RequestMapping("/info")
-	public String getInfo(HttpServletRequest hsr, Model model) {
-		String uid = hsr.getParameter("userid");
-		String pw = hsr.getParameter("passcode");
-		model.addAttribute("loginid", uid);
-		model.addAttribute("loginpw", pw);
-		return "viewinfo";
-	}
-	
-	@RequestMapping("/newinfo")
-	public String getNewInfo(HttpServletRequest hsr, Model model) {
-		String n = hsr.getParameter("username");
-		String uid = hsr.getParameter("userid");
-		String pw = hsr.getParameter("password");
-		String pw1 = hsr.getParameter("password2");
-		String m = hsr.getParameter("phonenumber");
-		model.addAttribute("un", n);
-		model.addAttribute("loginid", uid);
-		model.addAttribute("loginpw", pw);
-		model.addAttribute("loginpw1", pw1);
-		model.addAttribute("pn", m);
-		return "newinfo";
-	}
-	
-	@RequestMapping("/backhome")
-	public String bh() {
-		return "home";
-	}
-	
-	@RequestMapping("/backlogin")
-	public String bl() {
-		return "login";
-	}
-	
-	@RequestMapping("/gobooking")
-	public String gb() {
-		return "booking";
-	}
-	
-	@RequestMapping("/goroom")
-	public String gr() {
-		return "room";
-	}
-	
-	@RequestMapping("/gomanage")
-	public String gm() {
-		return "booking";
-	}
-	
-	@RequestMapping("/login")
-	public String li() {
-		return "login";
+	@RequestMapping("/newbie")
+	public String newbie() {
+		return "newbie";
 	}
 	
 	@RequestMapping(value = "/check_user", method = RequestMethod.POST)
@@ -101,6 +44,7 @@ public class HomeController {
 		
 		System.out.println("userid="+userid+",passcode="+passcode);
 		
+		// DB에서 유저 확인 : 기존 유저면 booking, 없으면 home으로.
 		HttpSession session = hsr.getSession();
 		session.setAttribute("loginid", userid);
 		
@@ -110,17 +54,20 @@ public class HomeController {
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
 	public String booking(HttpServletRequest hsr) {
 		HttpSession session = hsr.getSession();
+		
 		String loginid=(String)session.getAttribute("loginid");
-		if(!loginid.equals("")) {
+		
+		if(loginid.equals("hello")) {
 			return "booking";
 		} else {
-			return "redirect:/login"; // JSP 화일 이름
+			return "redirect:/"; // JSP 화일 이름
 		}
 	}
 	
 	@RequestMapping("/room")
 	public String room(HttpServletRequest hsr) {
 		HttpSession session = hsr.getSession();
+		
 		if(session.getAttribute("loginid")==null) {
 			return "redirect:login";
 		}
@@ -130,7 +77,10 @@ public class HomeController {
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest hsr) {
 		HttpSession session = hsr.getSession();
+		
 		session.invalidate();
+		
 		return "redirect:/";
 	}
+	
 }

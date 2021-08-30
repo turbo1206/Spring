@@ -6,13 +6,12 @@
 	<title>Home</title>
 </head>
 <body>
-	<h3>
-	호텔에 오신 것을 환영합니다.<br>
-		<h5>
-		로그인 및 회원가입을 하십시요.<br>
-		</h5>
-	</h3>
-	<a href='home?path=login'>로그인</a>&nbsp;&nbsp;
-	<a href='home?path=newbie'>회원가입</a>
+	<form method="post" action="/hotel/check_user">
+	사용자ID: <input type="text" name="userid"><br>
+	비밀번호: <input type="password" name="passcode"><br>
+	<input type="submit" value="로그인">&nbsp;
+	<input type="submit" value="취소">
+	</form>
+	<a href="/hotel/newbie">회원가입</a>
 </body>
 </html>

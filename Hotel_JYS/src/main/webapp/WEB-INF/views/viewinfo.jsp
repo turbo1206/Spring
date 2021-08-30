@@ -11,8 +11,5 @@
 	<p>${loginid}</p><br>
 	비밀번호<br>
 	<p>${loginpw}</p><br>
-	<form method="get" action="backhome">
-	<input type="submit" value="돌아가기">
-	</form>
 </body>
 </html>

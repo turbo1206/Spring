@@ -11,12 +11,10 @@
 </head>
 	<h1>객실관리</h1>
 		<body>
-		    <form method="get" action="gomanage">
+		    <form method="get" action="/hotel/booking">
 		    <input type="submit" value="예약관리">
 		     </form>
-		    <form method="get" action="backhome">
-			<input type="submit" value="로그아웃">
-			</form>
+		    <a href="logout">로그아웃</a>
 			<br><br>
 			    숙박기간 <input type="text">~<input type="text"><br>
 		   	    객실분류 <select size=5 multiple>
