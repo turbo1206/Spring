@@ -9,9 +9,10 @@ public class Roominfo {
 	   
 	   
 	   public Roominfo() {
-	}
+		   
+	   }
 
-	public Roominfo(int roomcode, String name, int type, int howmany, int howmuch) {
+	   public Roominfo(int roomcode, String name, int type, int howmany, int howmuch) {
 	      this.roomcode = roomcode;
 	      this.name = name;
 	      this.type = type;

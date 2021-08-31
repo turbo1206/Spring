@@ -12,7 +12,7 @@
 <body>
  	<a href="room">객실관리</a>
    	<a href="logout">로그아웃</a>
-	<br><br>  
+	<br><br>
     <label for="room_list">객실목록</label>
           <p>
             <textarea name="" id="room_list" cols="10" rows="20">
