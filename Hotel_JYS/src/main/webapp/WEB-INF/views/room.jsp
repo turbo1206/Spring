@@ -10,14 +10,16 @@
     <title>객실관리</title>
 </head>
 <body>
+	<h1>객실관리</h1>
 	<a href="booking">예약관리</a>
     <a href="logout">로그아웃</a>
+    <br><br>
     <table border=1>
     	<tr>
     		<td>
     			<select size="10" style="width: 250px;">
     			<c:forEach items="${list}" var="room">
-    				<option>${room.roomcode}, ${room.name}, ${room.type}, ${room.howmany}, ${room.howmuch}</option>
+    				<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
     			</c:forEach>
     			</select>
    			</td>
@@ -64,5 +66,9 @@
     	</tr>
     </table>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script>
+
+</script>
 </html>
         

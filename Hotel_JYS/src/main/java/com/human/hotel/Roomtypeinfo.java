@@ -1,8 +1,8 @@
 package com.human.hotel;
 
 public class Roomtypeinfo {
-	int typecode;
-	String name;
+	private int typecode;
+	private String name;
 	
 	public Roomtypeinfo() {
 		
