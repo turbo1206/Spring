@@ -9,9 +9,9 @@
 	<form method="post" action="/hotel/check_user">
 	사용자ID: <input type="text" name="userid"><br>
 	비밀번호: <input type="password" name="passcode"><br>
-	<input type="submit" value="로그인">&nbsp;
-	<input type="submit" value="취소">
+	<br><input type="submit" value="로그인">
+	&nbsp;<input type="submit" value="취소">
+	&nbsp;<a href="/hotel/newbie">회원가입</a>
 	</form>
-	<a href="/hotel/newbie">회원가입</a>
 </body>
 </html>

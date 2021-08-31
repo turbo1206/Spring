@@ -9,57 +9,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>객실관리</title>
 </head>
-	<h1>객실관리</h1>
 <body>
-    <a href="booking">예약관리</a>
-    <a href="logout">로그아웃</a><br>
-    <select size="10" style="width: 250px;">
-    	<c:forEach items="${list}" var="room">
-    		<option>
-    			${room.roomcode}, ${room.name}, ${room.type}, ${room.howmany}, ${room.howmuch}
-    		</option>
-    	</c:forEach>
-    </select>
-   	    숙박기간 <input type="text">~<input type="text"><br>
-  	    객실분류 <select size=5 multiple>
-           <option></option>
-           <option></option>
-           <option></option>
-           <option></option>
-           <option></option>
-           </select>
-           <input type="button" value="찾기"><br><br>
- 	  예약가능
-   <label for="room_list"></label>
-         <p>
-           <textarea name="" id="room_list" cols="10" rows="20">
-	              한라산
-	              백두산
-	              관악산
-	              남산
-	              수명산
-	              태조산
-           </textarea>
-         </p>
-   <div class="room_list">
-    객실이름 <input type="text"><br>
-    숙박기간 <input type="text">~<input type="text"><br>
-    숙박인원 <input type="text">명<br>
-  	  1박비용 <input type="text">원<br>
-    총 숙박비 <input type="text">원<br>
-    예약자 모바일 <input type="text"><br><br>
-   <input type="button" value="등록">
-   <input type="button" value="취소">
-   <input type="button" value="Clear"></div><br><br>
-   <div class="room_list_right">
-   <label for="room_list">예약 된 객실</label><br>
-         <p>
-           <textarea name="" id="room_list" cols="10" rows="20">
-	              광덕산
-	              흑성산
-	              태조산
-	              관악산
-           </textarea>
-         </p>
-       </div>
+	<a href="booking">예약관리</a>
+    <a href="logout">로그아웃</a>
+    <table border=1>
+    	<tr>
+    		<td>
+    			<select size="10" style="width: 250px;">
+    			<c:forEach items="${list}" var="room">
+    				<option>${room.roomcode},${room.name},${room.type},${room.howmany},${room.howmuch}</option>
+    			</c:forEach>
+    			</select>
+   			</td>
+   			<td>
+   				<table>
+   				<tr>
+   					<td align="right">객실명</td>
+   					<td>
+   						<input type="text" id="txtName">
+   						<input type="hidden" id="roomcode">
+   					</td>
+   				</tr>
+   				<tr>
+   					<td align="right">타입</td>
+   					<td>
+   						<select size="5" style="width: 120px;" id="selType">
+						<c:forEach items="${typelist}" var="room">
+    						<option>${room.typecode},${room.name}</option>
+    					</c:forEach>
+   						</select>
+   					</td>
+   				</tr>
+   				<tr>
+   					<td align="right">최대숙박인원</td>
+   					<td>
+   						<input type="number" id="txtNum">
+   					</td>
+   				</tr>
+   				<tr>
+   					<td align="right">1박 가격</td>
+   					<td>
+   						<input type="number" id="txtPrice">
+   					</td>
+   				</tr>
+   				<tr>
+   					<td colspan="2" align="center">
+   						<input type="button" value="등록" id="btnAdd">&nbsp;
+   						<input type="button" value="삭제" id="btnDelete">&nbsp;
+   						<input type="button" value="취소" id="btnEmpty">
+   					</td>
+   				</tr>
+   				</table>
+   			</td>
+    	</tr>
+    </table>
+</body>
+</html>
         

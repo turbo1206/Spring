@@ -43,7 +43,7 @@ public class HomeController {
 		String userid=hsr.getParameter("userid");
 		String passcode=hsr.getParameter("passcode");
 		
-		System.out.println("userid="+userid+",passcode="+passcode);
+		System.out.println("userid="+userid+"  "+"passcode="+passcode);
 		
 		// DB에서 유저 확인 : 기존 유저면 booking, 없으면 home으로.
 		HttpSession session = hsr.getSession();
@@ -74,8 +74,10 @@ public class HomeController {
 		// 여기서 interface 호출하고 결과를 room.jsp에 전달.
 		iRoom room=sqlSession.getMapper(iRoom.class);
 		ArrayList<Roominfo> roominfo = room.getRoomList();
+		ArrayList<Roomtypeinfo> roomtypeinfo = room.getRoomTypeList();
 		System.out.println(roominfo);
 		model.addAttribute("list", roominfo);
+		model.addAttribute("typelist", roomtypeinfo);
 		return "room";
 	}
 	

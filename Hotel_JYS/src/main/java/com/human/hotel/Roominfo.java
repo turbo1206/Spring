@@ -51,5 +51,4 @@ public class Roominfo {
 	      this.howmuch = howmuch;
 	   }
 	   
-	   
 	}

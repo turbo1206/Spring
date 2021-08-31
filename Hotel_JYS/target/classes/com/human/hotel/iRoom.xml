@@ -7,6 +7,9 @@
 <mapper namespace="com.human.hotel.iRoom">
 	<!-- select id="인터페이스의 매소드" resultType="인터페이스의 반환데이터타입" -->
 	<select id="getRoomList" resultType="com.human.hotel.Roominfo">
-      select roomcode,name,type,howmany,howmuch from room order by name
+      select roomcode,name,type,howmany,howmuch from room order by roomcode
+   </select>
+   <select id="getRoomTypeList" resultType="com.human.hotel.Roomtypeinfo">
+      select typecode,name from roomtype order by typecode
    </select>
 </mapper>

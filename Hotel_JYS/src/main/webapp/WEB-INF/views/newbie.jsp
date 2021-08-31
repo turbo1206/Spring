@@ -13,7 +13,7 @@
 	비밀번호: <input type="text" name="password"><br>
 	비밀번호 확인: <input type="text" name="password2"><br>
 	모바일: <input type="text" name="phonenumber"><br>
-	<input type="submit" value="회원가입">
+	<br><input type="submit" value="회원가입">
 	<input type="submit" value="취소">
 	</form>
 </body>
