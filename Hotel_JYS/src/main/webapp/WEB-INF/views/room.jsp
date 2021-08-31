@@ -17,7 +17,7 @@
     <table border=1>
     	<tr>
     		<td>
-    			<select size="10" style="width: 250px;">
+    			<select id="roomlist" size="10" style="width: 250px;">
     			<c:forEach items="${list}" var="room">
     				<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
     			</c:forEach>
@@ -35,9 +35,9 @@
    				<tr>
    					<td align="right">타입</td>
    					<td>
-   						<select size="5" style="width: 120px;" id="selType">
-						<c:forEach items="${typelist}" var="roomtype">
-    						<option value="${roomtype.typecode}">${roomtype.name}</option>
+   						<select id="selType" size="5" style="width: 120px;">
+						<c:forEach items="${typelist}" var="type">
+    						<option value="${type.typecode}">${type.name}</option>
     					</c:forEach>
    						</select>
    					</td>
@@ -45,13 +45,13 @@
    				<tr>
    					<td align="right">최대숙박인원</td>
    					<td>
-   						<input type="number" id="txtNum">
+   						<input type="text" id="txtNum">
    					</td>
    				</tr>
    				<tr>
    					<td align="right">1박 가격</td>
    					<td>
-   						<input type="number" id="txtPrice">
+   						<input type="text" id="txtPrice">
    					</td>
    				</tr>
    				<tr>
@@ -68,7 +68,33 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
-
+	$(document)
+	.on('click','#roomlist', function(){
+		var str1 = $('#roomlist option:selected').text(); // option 값 가져오기
+		var str2 = $('#roomlist').val(); // value에서 typecode 가져오기
+		var box = String(str2).split(" "); // typecode를 가져오기 위해 split
+		var typecode = parseInt(box[0]); // int로 타입 변환
+		var list = String(str1).split(","); // option에서 가져온 값들 배열로 슬라이싱
+		
+		var roomname = list[0];
+		var roomtype = list[1];
+		var howmany = list[2];
+		var howmuch = list[3];
+		
+		$('#txtName').val(roomname);
+		$('#txtNum').val(howmany);
+		$('#txtPrice').val(howmuch);
+		
+		if(typecode==22) {
+			$('#selType').val(1).prop("selected", true);
+		} else if(typecode==23) {
+			$('#selType').val(2).prop("selected", true);
+		} else if(typecode==24) {
+			$('#selType').val(3).prop("selected", true);
+		} else if(typecode==25) {
+			$('#selType').val(4).prop("selected", true);
+		}
+		
+	});
 </script>
 </html>
-        
