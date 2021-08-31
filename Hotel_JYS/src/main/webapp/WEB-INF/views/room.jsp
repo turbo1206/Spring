@@ -17,7 +17,7 @@
     		<td>
     			<select size="10" style="width: 250px;">
     			<c:forEach items="${list}" var="room">
-    				<option>${room.roomcode},${room.name},${room.type},${room.howmany},${room.howmuch}</option>
+    				<option>${room.roomcode}, ${room.name}, ${room.type}, ${room.howmany}, ${room.howmuch}</option>
     			</c:forEach>
     			</select>
    			</td>
@@ -34,8 +34,8 @@
    					<td align="right">타입</td>
    					<td>
    						<select size="5" style="width: 120px;" id="selType">
-						<c:forEach items="${typelist}" var="room">
-    						<option>${room.typecode},${room.name}</option>
+						<c:forEach items="${typelist}" var="roomtype">
+    						<option value="${roomtype.typecode}">${roomtype.name}</option>
     					</c:forEach>
    						</select>
    					</td>
