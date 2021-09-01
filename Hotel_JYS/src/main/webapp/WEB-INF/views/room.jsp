@@ -17,10 +17,10 @@
     <table border=1>
     	<tr>
     		<td>
-    			<select id="roomlist" size="10" style="width: 250px;">
-    			<c:forEach items="${list}" var="room">
-    				<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
-    			</c:forEach>
+    			<select id="selRoom" size="10" style="width: 250px;">
+	<%--	 		<c:forEach items="${list}" var="room">
+    					<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
+    				</c:forEach>--%> 
     			</select>
    			</td>
    			<td>
@@ -68,10 +68,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
-	$(document)
-	.on('click','#roomlist', function(){
-		var str1 = $('#roomlist option:selected').text(); // option 값 가져오기
-		var str2 = $('#roomlist').val(); // value에서 typecode 가져오기
+/*	$(document)
+	.on('click','#selRoom', function(){
+		var str1 = $('#selRoom option:selected').text(); // option 값 가져오기
+		var str2 = $('#selRoom').val(); // value에서 typecode 가져오기
 		var box = String(str2).split(" "); // typecode를 가져오기 위해 split
 		var typecode = parseInt(box[0]); // int로 타입 변환
 		var list = String(str1).split(","); // option에서 가져온 값들 배열로 슬라이싱
@@ -85,16 +85,39 @@
 		$('#txtNum').val(howmany);
 		$('#txtPrice').val(howmuch);
 		
-		if(typecode==22) {
+		if(typecode==1) {
 			$('#selType').val(1).prop("selected", true);
-		} else if(typecode==23) {
+		} else if(typecode==2) {
 			$('#selType').val(2).prop("selected", true);
-		} else if(typecode==24) {
+		} else if(typecode==3) {
 			$('#selType').val(3).prop("selected", true);
-		} else if(typecode==25) {
+		} else if(typecode==4) {
 			$('#selType').val(4).prop("selected", true);
 		}
 		
-	});
+	}) */
+	$(document)
+	.ready(function(){
+		$.post("http://localhost:9090/hotel/getRoomList",{},function(result){
+			console.log(result);
+		},'json'); 
+	})
+	
+	.on('click','#selRoom option',function(){
+		let str=$(this).text(); // selRoom option 데이터를 텍스트로 str 변수로 선언.
+		let ar=str.split(',');
+		$('#txtName').val($.trim(ar[0])); // ar[1]을 txtName에 넣기.
+		$('#selType option:contains("'+$.trim(ar[1])+'")').prop('selected','true');
+		$('#txtNum').val($.trim(ar[2])); // ar[2]을 txtNum에 넣기.
+		$('#txtPrice').val($.trim(ar[3])); // ar[3]을 txtPrice에 넣기.
+		let code = $(this).val();
+		$('#roomcode').val(code); // roomcode의 value 값을 code에 넣는다.
+		return false;
+	})
+	
+	.on('click','#btnEmpty',function(){
+		$('#txtName,#txtNum,#txtPrice,#roomcode,#selType').val('');
+		return false;
+	})
 </script>
 </html>
