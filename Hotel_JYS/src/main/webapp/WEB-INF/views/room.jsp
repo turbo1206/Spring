@@ -98,7 +98,7 @@
 	}) */
 	$(document)
 	.ready(function(){
-		$.post("http://localhost:9090/hotel/getRoomList",{},function(result){
+		$.post("http://localhost:8080/hotel/getRoomList",{},function(result){
 			console.log(result);
 		},'json'); 
 	})
