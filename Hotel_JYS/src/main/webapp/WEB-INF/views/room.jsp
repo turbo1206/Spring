@@ -98,7 +98,7 @@
 	}) */
 	$(document)
 	.ready(function(){
-		$.post("http://localhost:8090/hotel/getRoomList",{},function(result){
+		$.post("http://localhost:8080/hotel/getRoomList",{},function(result){
 			console.log(result);
 			$.each(result, function(ndx,value){
 				str='<option value="'+value['roomcode']+'">'+value['roomname']+','+
@@ -127,11 +127,11 @@
 		return false;
 	})
 	.on('click','#btnDelete',function(){
-		$.post('http://localhost:8090/hotel/deleteRoom',{roomcode:$('#roomcode').val()},
+		$.post('http://localhost:8080/hotel/deleteRoom',{roomcode:$('#roomcode').val()},
 				function(result){
 			console.log(result);
 			if(result=="ok") {
-				$('#btnEmpty').trigger('click'); // 입력란 비우기
+				$('#btnEmpty').trigger('click'); // 입력란 비우기.
 				$('#selRoom option:selected').remove(); // room 리스트에서 제거.
 			}
 		},'text');
@@ -150,7 +150,7 @@
 		}
 		let roomcode = $('#roomcode').val();
 		if(roomcode=='') { // insert
-			$.post('http://localhost:8090/hotel/addRoom',
+			$.post('http://localhost:8080/hotel/addRoom',
 					{roomname:roomname,roomtype:roomtype,howmany:howmany,howmuch:howmuch},
 					function(result) {
 						if(result=='ok') {
@@ -158,7 +158,7 @@
 						}
 					},'text');
 		} else {
-			$.post('http://localhost:8090/hotel/updateRoom',
+			$.post('http://localhost:8080/hotel/updateRoom',
 					{roomcode:roomcode,roomname:roomname,
 					roomtype:roomtype,howmany:howmany,howmuch:howmuch},
 					function(result) {
