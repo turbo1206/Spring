@@ -18,9 +18,9 @@
     	<tr>
     		<td>
     			<select id="selRoom" size="10" style="width: 250px;">
-	<%--	 		<c:forEach items="${list}" var="room">
+	 			<%-- 	<c:forEach items="${list}" var="room">
     					<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
-    				</c:forEach>--%> 
+    				</c:forEach>  --%>
     			</select>
    			</td>
    			<td>
@@ -98,8 +98,15 @@
 	}) */
 	$(document)
 	.ready(function(){
-		$.post("http://localhost:8080/hotel/getRoomList",{},function(result){
+		$.post("http://localhost:8090/hotel/getRoomList",{},function(result){
 			console.log(result);
+			$.each(result, function(ndx,value){
+				str='<option value="'+value['roomcode']+'">'+value['roomname']+','+
+					value['typename']+','+value['howmany']+','+value['howmuch']+'</option>';
+				$('#selRoom').append(str);
+				/* str='<option value="${value['roomcode']}">${value['roomname']},${value}['typename']},'+
+				'${value['howmany']},${value['howmuch']}</option>'; */
+			});
 		},'json'); 
 	})
 	
@@ -117,6 +124,17 @@
 	
 	.on('click','#btnEmpty',function(){
 		$('#txtName,#txtNum,#txtPrice,#roomcode,#selType').val('');
+		return false;
+	})
+	.on('click','#btnDelete',function(){
+		$.post('http://localhost:8090/hotel/deleteRoom',{roomcode:$('#roomcode').val()},
+				function(result){
+			console.log(result);
+			if(result=="ok") {
+				$('#btnEmpty').trigger('click'); // 입력란 비우기
+				$('#selRoom option:selected').remove(); // room 리스트에서 제거.
+			}
+		},'text');
 		return false;
 	})
 </script>

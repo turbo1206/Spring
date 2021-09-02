@@ -8,13 +8,18 @@
 	<!-- select id="인터페이스의 매소드" resultType="인터페이스의 반환데이터타입" -->
 	<select id="getRoomList" resultType="com.human.hotel.Roominfo">
       select a.roomcode, a.name roomname, b.name typename, a.howmany, a.howmuch
-      from room a, roomtype b 
+      from room a, roomtype b
       where a.type=b.typecode
       order by roomname
    </select>
    <select id="getRoomTypeList" resultType="com.human.hotel.Roomtypeinfo">
-      select typecode,name 
-      from roomtype 
+      select typecode,name
+      from roomtype
       order by typecode
    </select>
+   <delete id="doDeleteRoom">
+   		delete 
+   		from room 
+   		where roomcode=#{param1}
+   </delete>
 </mapper>

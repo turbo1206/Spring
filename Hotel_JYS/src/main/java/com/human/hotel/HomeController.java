@@ -39,6 +39,7 @@ public class HomeController {
 		return "newbie";
 	}
 	
+	
 	@RequestMapping(value = "/check_user", method = RequestMethod.POST)
 	public String booking(HttpServletRequest hsr, Model model) {
 		String userid=hsr.getParameter("userid");
@@ -46,11 +47,11 @@ public class HomeController {
 		
 		System.out.println("userid="+userid+"  "+"passcode="+passcode);
 		
-		// DB�뿉�꽌 �쑀�� �솗�씤 : 湲곗〈 �쑀��硫� booking, �뾾�쑝硫� home�쑝濡�.
+		
 		HttpSession session = hsr.getSession();
 		session.setAttribute("loginid", userid);
 		
-		return "redirect:/booking"; // RequestMapping�쓽 寃쎈줈 �씠由�
+		return "redirect:/booking"; 
 	}
 	
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
@@ -62,7 +63,7 @@ public class HomeController {
 		if(loginid.equals("hello")) {
 			return "booking";
 		} else {
-			return "home"; // JSP �솕�씪 �씠由�
+			return "home"; 
 		}
 	}
 	
@@ -72,7 +73,6 @@ public class HomeController {
 		if(session.getAttribute("loginid")==null) {
 			return "redirect:/login";
 		}
-		// �뿬湲곗꽌 interface �샇異쒗븯怨� 寃곌낵瑜� room.jsp�뿉 �쟾�떖.
 		iRoom room=sqlSession.getMapper(iRoom.class);
 //		ArrayList<Roominfo> roominfo = room.getRoomList();
 		ArrayList<Roomtypeinfo> roomtypeinfo = room.getRoomTypeList();
@@ -96,7 +96,7 @@ public class HomeController {
 	@ResponseBody
 	public String getRoomList(HttpServletRequest hsr) {
 		iRoom room=sqlSession.getMapper(iRoom.class);
-		ArrayList<Roominfo> roominfo = room.getRoomList();
+		ArrayList<Roominfo> roominfo = room.getRoomList(); // camel notation
 		// 찾아진 데이터로 JSONArray 만들기
 		JSONArray ja = new JSONArray();
 		for(int i=0;i<roominfo.size();i++) {
@@ -110,5 +110,13 @@ public class HomeController {
 		}
 		return ja.toString();
 	}
-	
+	@RequestMapping(value="/deleteRoom",method=RequestMethod.POST,
+			produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String deleteRoom(HttpServletRequest hsr) {
+		int roodcode = Integer.parseInt(hsr.getParameter("roomcode"));
+		iRoom room = sqlSession.getMapper(iRoom.class);
+		room.doDeleteRoom(roodcode);
+		return "ok";
+	}
 }
