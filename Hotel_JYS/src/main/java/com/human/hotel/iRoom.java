@@ -7,5 +7,6 @@ public interface iRoom {
 	ArrayList<Roomtypeinfo> getRoomTypeList();
 	
 	void doDeleteRoom(int roomcode);
+	void doAddRoom(String roomname, String roomtype, int howmany, int howmuch);
 	
 }

@@ -137,5 +137,24 @@
 		},'text');
 		return false;
 	})
+	
+	.on('click','#btnAdd',function(){
+		let roomname=$('#txtName').val();
+		let roomtype=$('#selType').val();
+		let howmany=$('#txtNum').val();
+		let howmuch=$('#txtPrice').val();
+		// validation (유효성 검사)
+		if( roomname=='' || roomtype=='' || howmany=='' || howmuch=='') {
+			alert('누락 된 값이 있습니다.');
+			return false;
+		}
+		$.post('http://localhost:8090/hotel/addRoom',
+				{roomname:roomname,roomtype:roomtype,howmany:howmany,howmuch:howmuch},
+				function(result) {
+					if(result=='ok') {
+						location.reload();
+					}
+				},'text');
+	})
 </script>
 </html>
