@@ -29,7 +29,7 @@
    					<td align="right">객실명</td>
    					<td>
    						<input type="text" id="txtName">
-   						<input type="hidden" id="roomcode">
+   						<input type="text" id="roomcode">
    					</td>
    				</tr>
    				<tr>
@@ -148,13 +148,25 @@
 			alert('누락 된 값이 있습니다.');
 			return false;
 		}
-		$.post('http://localhost:8090/hotel/addRoom',
-				{roomname:roomname,roomtype:roomtype,howmany:howmany,howmuch:howmuch},
-				function(result) {
-					if(result=='ok') {
-						location.reload();
-					}
-				},'text');
+		let roomcode = $('#roomcode').val();
+		if(roomcode=='') { // insert
+			$.post('http://localhost:8090/hotel/addRoom',
+					{roomname:roomname,roomtype:roomtype,howmany:howmany,howmuch:howmuch},
+					function(result) {
+						if(result=='ok') {
+							location.reload();
+						}
+					},'text');
+		} else {
+			$.post('http://localhost:8090/hotel/updateRoom',
+					{roomcode:roomcode,roomname:roomname,
+					roomtype:roomtype,howmany:howmany,howmuch:howmuch},
+					function(result) {
+						if(result=='ok'){
+							location.reload();
+						} 
+					},'text');
+		}
 	})
 </script>
 </html>
