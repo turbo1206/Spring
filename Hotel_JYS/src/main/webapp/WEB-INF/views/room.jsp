@@ -158,6 +158,7 @@
 						}
 					},'text');
 		} else {
+			console.log('roomcode ['+roomcode+']');
 			$.post('http://localhost:8080/hotel/updateRoom',
 					{roomcode:roomcode,roomname:roomname,
 					roomtype:roomtype,howmany:howmany,howmuch:howmuch},
