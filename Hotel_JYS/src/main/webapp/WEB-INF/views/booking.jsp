@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약관리</title>
     <style>
-        b {
+        .big {
             font-size: 30px;
+        }
+        .small {
+        	font:bold;
         }
         .menu {
             height: 70px;
@@ -63,46 +66,46 @@
 </head>
 <body>
     <div class="menu">
-        <b>예약관리</b>
+        <b class="big">예약관리</b>
         <div class="menu-right-item">
-            <div class="menu-item"><a href="room">객실관리</a></div>
-            <div class="menu-item"><a href="logout">로그아웃</a></div>
+            <div class="menu-item"><a href="room"><b class="small">객실관리</b></a></div>
+            <div class="menu-item"><a href="logout"><b class="small">로그아웃</b></a></div>
         </div>
     </div>
     <div class="main">
         <div class="box">
             <div class="box-items1">
-                <br><br>예약기간
-                <input type="text" size="7"> ~
+                <br><br><b class="small">예약기간</b>
+                <input type="text" size="7"><b class="small"> ~</b>
                 <input type="text" size="7">
-                <br><br>객실종류
+                <br><br><b class="small">객실종류</b>
                 <select slot="5" style="width: 170px;"></select>
-                <br><br>예약가능객실<br><br>
+                <br><br><b class="small">예약가능객실</b><br><br>
                 <select size="20" style="width: 280px;"></select>
             </div>
             <div class="box-items2">
-                <br><br>객실명
+                <br><br><b class="small">객실명</b>
                 <input type="text" size="20">
-                <br><br>객실종류
+                <br><br><b class="small">객실종류</b>
                 <select slot="5" style="width: 160px;"></select>
-                <br><br>예약인원
+                <br><br><b class="small">예약인원</b>
                 <input type="text" size="10"> 명
-                <br><br>최대인원
+                <br><br><b class="small">최대인원</b>
                 <input type="text" size="10"> 명
-                <br><br>예약기간
-                <input type="text" size="7"> ~
+                <br><br><b class="small">예약기간</b>
+                <input type="text" size="7"><b class="small"> ~</b>
                 <input type="text" size="7">
-                <br><br>예약자명
+                <br><br><b class="small">예약자명</b>
                 <input type="text" size="10">
-                <br><br>모바일
+                <br><br><b class="small">모바일</b>
                 <input type="text" size="15">
                 <br><br><br><br><br>
-                <input type="button" style="border-radius: 4;" value="예약완료">
-                <input type="button" style="border-radius: 4;" value="비우기">
-                <input type="button" style="border-radius: 4;" value="예약취소">
+                <input type="button" style="border-radius: 4; font:bold;" value="예약완료">
+                <input type="button" style="border-radius: 4; font:bold;" value="비우기">
+                <input type="button" style="border-radius: 4; font:bold;" value="예약취소">
             </div>
             <div class="box-items3">
-                <br>예약 된 객실
+                <br><b class="small">예약 된 객실</b>
                 <br><br>
                 <select size="27" style="width: 280px;"></select>
             </div>
