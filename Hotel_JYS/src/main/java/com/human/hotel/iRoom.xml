@@ -30,4 +30,8 @@
    		update room set name=#{param2},type=#{param3},howmany=#{param4},howmuch=#{param5}
    		where roomcode=#{param1}
    </update>
+     <insert id="doAddBooking">
+   		insert into booking(bookcode, roomcode, person, checkin, checkout, name, moblie, price)
+   		values(seq_booking.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8})
+   </insert>
 </mapper>

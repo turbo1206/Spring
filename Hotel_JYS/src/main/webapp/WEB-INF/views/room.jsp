@@ -8,11 +8,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>객실관리</title>
+    <style>
+     .big {
+      		font-size: 30px;
+     }
+     .menu {
+         	height: 70px;
+         	border-bottom : 1px solid black;
+         	display: flex;
+         	align-items: center;
+     }
+     .menu-right-item {
+         	display: flex;
+         	margin-left: auto;
+     }
+     .menu-item {
+         	margin-left: 10px;
+     }
+    </style>
 </head>
 <body>
-	<h1>객실관리</h1>
-	<a href="booking">예약관리</a>
-    <a href="logout">로그아웃</a>
+	<div class="menu">
+        <b class="big">객실관리</b>
+        <div class="menu-right-item">
+            <div class="menu-item"><a href="booking"><b class="small">예약관리</b></a></div>
+            <div class="menu-item"><a href="logout"><b class="small">로그아웃</b></a></div>
+        </div>
+    </div>
     <br><br>
     <table border=1>
     	<tr>
@@ -126,6 +148,7 @@
 		$('#txtName,#txtNum,#txtPrice,#roomcode,#selType').val('');
 		return false;
 	})
+	
 	.on('click','#btnDelete',function(){
 		$.post('http://localhost:8080/hotel/deleteRoom',{roomcode:$('#roomcode').val()},
 				function(result){

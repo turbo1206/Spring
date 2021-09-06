@@ -73,14 +73,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
-	public String booking(HttpServletRequest hsr) {
+	public String booking(HttpServletRequest hsr, Model model) {
 		HttpSession session = hsr.getSession();
 		
 		String loginid=(String)session.getAttribute("loginid");
-		
 		if(loginid==null) {
 			return "redirect:home";
 		} else {
+			iRoom room=sqlSession.getMapper(iRoom.class);
+			ArrayList<Roomtypeinfo> roomtypeinfo = room.getRoomTypeList();
+			model.addAttribute("typelist", roomtypeinfo);
 			return "booking"; 
 		}
 	}
@@ -175,4 +177,5 @@ public class HomeController {
 //				);
 		return "ok";
 	}
+	
 }

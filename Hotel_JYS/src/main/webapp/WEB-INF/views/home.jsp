@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
 	$(document)
-	.on('submit','#frmlogin' function(){
+	.on('submit','#frmlogin', function(){
 		let pstr=$.trim($('input[name=userid]').val());
 		$('input[name=userid]').val(pstr);
 		pstr=$.trim('input[name=passcode]').val());
