@@ -178,4 +178,19 @@ public class HomeController {
 		return "ok";
 	}
 	
+	@RequestMapping(value="/addBook", method=RequestMethod.POST)
+	@ResponseBody
+	public String addBook(HttpServletRequest hsr) {
+		int roomcode = Integer.parseInt(hsr.getParameter("roomcode"));
+		int howmany = Integer.parseInt(hsr.getParameter("howmany"));
+		String checkin = hsr.getParameter("checkin");
+		String checkout = hsr.getParameter("checkout");
+		int total = Integer.parseInt(hsr.getParameter("total"));
+		String booker = hsr.getParameter("booker");
+		String mobile = hsr.getParameter("mobile");
+		iBook book = sqlSession.getMapper(iBook.class);
+		book.doInsertBooking(roomcode, howmany, checkin, checkout, total, booker, mobile);
+		return "ok";
+	}
+	
 }
