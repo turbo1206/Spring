@@ -82,6 +82,10 @@
               	<br><input type="date" id="checkout">
                 <br><br><b class="small">객실종류</b><br><br>
                 <select id="selRoomType" slot="5" style="width: 140px;">
+                <option value="-">전체</option>
+                	<c:forEach items="${typelist}" var="room">
+                		<option value="${room.typecode}">${room.name}</option>
+                	</c:forEach>
                 </select>
                 <input type="button" value="조회" id="btnFind">
                 <br><br><br><b class="small">예약가능객실</b><br><br>
