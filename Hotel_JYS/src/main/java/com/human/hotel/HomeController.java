@@ -193,4 +193,51 @@ public class HomeController {
 		return "ok";
 	}
 	
+	@RequestMapping(value="/Availablerooms",method=RequestMethod.POST,
+			produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String availablerooms(HttpServletRequest hsr) {
+	iRoom room=sqlSession.getMapper(iRoom.class);
+	String checkin = hsr.getParameter("checkin");
+	String checkout = hsr.getParameter("checkout");
+	int typecode = Integer.parseInt(hsr.getParameter("typecode"));
+	ArrayList<Roominfo> roominfo = room.Availablerooms(checkin,checkout,typecode); // camel notation
+	// 찾아진 데이터로 JSONArray 만들기
+	JSONArray ja = new JSONArray();
+	for(int i=0;i<roominfo.size();i++) {
+		JSONObject jo = new JSONObject();
+		jo.put("roomcode", roominfo.get(i).getRoomcode());
+		jo.put("roomname", roominfo.get(i).getRoomname());
+		jo.put("typename", roominfo.get(i).getTypename());
+		jo.put("howmany", roominfo.get(i).getHowmany());
+		jo.put("howmuch", roominfo.get(i).getHowmuch());
+		jo.put("typecode", roominfo.get(i).getTypecode());
+		ja.add(jo);
+	}
+	return ja.toString();
+	}
+	
+	@RequestMapping(value="/findBooked", method=RequestMethod.POST)
+	@ResponseBody
+	public String findBooked(HttpServletRequest hsr) {
+		iBook book = sqlSession.getMapper(iBook.class);
+		String checkin = hsr.getParameter("checkin");
+		String checkout = hsr.getParameter("checkout");
+		int typecode = Integer.parseInt(hsr.getParameter("typecode"));
+		ArrayList<Findbookedinfo> Findbookedinfo=book.findBooked(checkin,checkout,typecode);
+		JSONArray ja = new JSONArray();
+		for(int i=0; i<Findbookedinfo.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("bookcode", Findbookedinfo.get(i).getBookcode());
+			jo.put("roomname", Findbookedinfo.get(i).getRoomname());
+			jo.put("roomtype", Findbookedinfo.get(i).getRoomtype());
+			jo.put("howmany", Findbookedinfo.get(i).getHowmany());
+			jo.put("total", Findbookedinfo.get(i).getTotal());
+			jo.put("booker", Findbookedinfo.get(i).getBooker());
+			jo.put("mobile", Findbookedinfo.get(i).getMobile());
+			jo.put("typecode", Findbookedinfo.get(i).getTypecode());
+			ja.add(jo);
+		}
+		return ja.toString();
+	}
 }

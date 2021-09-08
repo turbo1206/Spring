@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약관리</title>
     <style>
+    	
         .big {
             font-size: 30px;
         }
@@ -37,13 +38,14 @@
         }
         .box-items1 {
             width: 300px;
-            height: 600px;
+            height: 510px;
             border: 5px solid black;
             margin-top: 150px;
             margin-left: 200px;
             margin-right: 200px;
             border-radius: 4px;
             text-align: center;
+            background-color: aqua;
         }
         .box-items2 {
             width: 300px;
@@ -53,15 +55,17 @@
             margin-right: 200px;
             border-radius: 4px;
             text-align: center;
+            background-color: aqua;
         }
         .box-items3 {
-            width: 400px;
-            height: 520px;
+            width: 450px;
+            height: 460px;
             border: 5px solid black;
             margin-top: 150px;
             margin-right: 200px;
             border-radius: 4px;
             text-align: center;
+            background-color: aqua;
         }
     </style>
 </head>
@@ -129,7 +133,7 @@
             <div class="box-items3">
                 <br><b class="small">예약 된 객실</b>
                 <br><br>
-                <select id="selBooked" size="27" style="width: 400px; height: 400px;"></select>
+                <select id="selBooked" size="27" style="width: 420px; height: 390px;"></select>
             </div>
         </div>
     </div>
@@ -253,7 +257,7 @@
 		checkout = new Date(checkout);
 		
 		if(checkin > checkout) {
-			alert('체크인 날짜가 체크아웃보다 나중 일 수 없습니다.');
+			alert('체크인 날짜가 체크아웃보다 나중일 수 없습니다.');
 			return false;
 		}
 		let ms = Math.abs(checkout-checkin);

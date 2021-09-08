@@ -51,7 +51,7 @@
    					<td align="right">객실명</td>
    					<td>
    						<input type="text" id="txtName">
-   						<input type="text" id="roomcode">
+   						<input type="hidden" id="roomcode">
    					</td>
    				</tr>
    				<tr>
