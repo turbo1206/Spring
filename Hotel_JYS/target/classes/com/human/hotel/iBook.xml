@@ -8,8 +8,16 @@
 		insert into booking values(seq_bookcode.nextval,
 		#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
 	</insert>
-	<select id="findBooked" resultType="com.human.hotel.iBook">
-	 	select a.bookcode, to_char(a.checkin,'YYYY-MM-DD') as checkin, to_char(a.checkout, 'YYYY-MM-DD') as checkout, a.mobile, a.name, a.price, a.pcount, a.roomcode, b.name roomname, c.name typename from booking a, room b, roomtype c
-      	where a.roomcode = b.roomcode and b.type=c.typecode and b.type=#{param3} and a.checkin between #{param1} and #{param2} and a.checkout between #{param1} and #{param2}  
+	<select id="findBooked" resultType="com.human.hotel.Findbookedinfo">
+	select a.bookcode, a.checkin, a.checkout, a.mobile, a.booker, a.total, a.howmany, a.roomcode, b.name roomname, c.name typename from booking a, room b, roomtype c
+      where a.roomcode = b.roomcode and b.type=c.typecode and b.type=#{param3} and a.checkin between #{param1} and #{param2} and a.checkout between #{param1} and #{param2}
+	<!-- select a.bookcode, to_char(a.checkin,'YYYY-MM-DD') as checkin, to_char(a.checkout, 'YYYY-MM-DD') as checkout, a.mobile, a.booker, a.total, a.howmany, a.roomcode, b.name roomname, c.name typename from booking a, room b, roomtype c
+      where a.roomcode = b.roomcode and b.type=c.typecode and b.type=#{param3} and a.checkin between #{param1} and #{param2} and a.checkout between #{param1} and #{param2}
+	 -->
 	</select>
+	<delete id="doDeleteBooking">
+   		delete 
+   		from booking 
+   		where bookcode=#{param1}
+   </delete>
 </mapper>

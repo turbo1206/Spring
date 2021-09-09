@@ -35,14 +35,14 @@
    		values(seq_booking.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8})
    </insert>
    <select id="Availablerooms" resultType="com.human.hotel.Roominfo">
-   		select roomcode, name roomname, 
-       	(select name from roomtype where typecode=#{param3}) as typename,
+   		  select roomcode, name roomname, 
+		(select name from roomtype where typecode=#{param3}) as typename,
        	howmany, howmuch
-	    from room 
-	    where type=#{param3} and roomcode not in(
-	    select roomcode from room
-	    INTERSECT
-	    select roomcode from booking where (checkin between #{param1} and to_date(#{param2})-1) 
-	    or (checkout between to_date(#{param1})+1 and to_date(#{param2})) or <![CDATA[(checkin<#{param1} and checkout>to_date(#{param2})-1))]]> 
+      	from room 
+      	where type=#{param3} and roomcode not in(
+      	select roomcode from room
+      	INTERSECT
+      	select roomcode from booking where (checkin between #{param1} and to_date(#{param2})-1) 
+      	or (checkout between to_date(#{param1})+1 and to_date(#{param2})) or <![CDATA[(checkin<#{param1} and checkout>to_date(#{param2})-1))]]> 
    </select>
 </mapper>

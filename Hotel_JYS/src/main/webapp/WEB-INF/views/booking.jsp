@@ -59,7 +59,7 @@
         }
         .box-items3 {
             width: 450px;
-            height: 460px;
+            height: 480px;
             border: 5px solid black;
             margin-top: 150px;
             margin-right: 200px;
@@ -86,7 +86,7 @@
               	<br><input type="date" id="checkout">
                 <br><br><b class="small">객실종류</b><br><br>
                 <select id="selRoomType" slot="5" style="width: 140px;">
-                <option value="-">전체</option>
+               <%-- <option value="-">전체</option> --%>
                 	<c:forEach items="${typelist}" var="room">
                 		<option value="${room.typecode}">${room.name}</option>
                 	</c:forEach>
@@ -100,6 +100,7 @@
                 <br><br><b class="small">객실명</b>
                 <input type="text" size="20" id="roomname">
                 <input type="hidden" id="roomcode">
+                <input type="hidden" id="bookcode">
                 <br><br><b class="small">객실종류</b>
                 <select slot="4" style="width: 160px;" id="selType">
                 	<c:forEach items="${typelist}" var="room">
@@ -133,7 +134,9 @@
             <div class="box-items3">
                 <br><b class="small">예약 된 객실</b>
                 <br><br>
-                <select id="selBooked" size="27" style="width: 420px; height: 390px;"></select>
+                
+                <select id="selBooked" size="27" style="width: 420px; height: 390px;">
+                </select>
             </div>
         </div>
     </div>
@@ -143,7 +146,11 @@
 	// 조회 버튼.
 	$(document)
 	.on('click','#btnFind', function(){
-		$.post("http://localhost:8080/hotel/getRoomList",{},function(result){
+		var checkin = $('#checkin').val();
+		var checkout = $('#checkout').val();
+		var typecode = $('#selRoomType option:selected').val();
+		
+		$.post("http://localhost:8080/hotel/Availablerooms",{checkin:$('#checkin').val(), checkout:$('#checkout').val(), typecode:$('#selRoomType option:selected').val()},function(result){
 			$('#selAvaiable').empty();
 			$.each(result, function(ndx,value){
 				str='<option value="'+value['roomcode']+'">'+value['roomname']+','+
@@ -151,6 +158,17 @@
 				$('#selAvaiable').append(str);
 				/* str='<option value="${value['roomcode']}">${value['roomname']},${value}['typename']},'+
 				'${value['howmany']},${value['howmuch']}</option>'; */
+			});
+		},'json');
+		$.post("http://localhost:8080/hotel/findBooked",{checkin:checkin, checkout:checkout, typecode:typecode},function(result){
+			alert('')
+			console.log(result);
+			$.each(result, function(ndx,value){
+				str='<option value="'+value['bookcode']+'">'+value['roomname']+','+
+				value['roomtype']+','+value['howmany']+','+value['total']+','+value['booker']+','+value['mobile']+','+value['checkin']+','+value['checkout']+'</option>';
+				$('#selBooked').append(str);
+				/* str='<option value="${value['roomcode']}">${value['roomname']},${value}['typename']},'+
+				'${value['howmany']},${value['howmuch']}</option>'; */ 
 			});
 		},'json');
 	})
@@ -188,7 +206,7 @@
 		let days = Math.ceil(ms/(1000*60*60*24));
 		let price = parseInt($('#price').val())
 		let total = days*price;
-
+		
 		$('#total').val(total);
 		return false;
 	})
@@ -244,7 +262,7 @@
 		return false;
 	})
 	
-	.on('change','#checkin1,#checkout1', function(){
+/*	.on('change','#checkin1,#checkout1', function(){
 		//alert('')
 		let checkin = $('#checkin1').val();
 		let checkout = $('#checkout1').val();
@@ -264,14 +282,33 @@
 		let days = Math.ceil(ms/(1000*60*60*24));
 		let price = parseInt($('#price').val())
 		let total = days*price;
-
+		
 		// $('#total').val(50000);
 		return false;
-	})
+	}) */
 	
+	// 비우기 버튼.
 	.on('click','#btnEmpty', function(){
 		$('#roomcode,#roomname,#selType,#howmany,#max_howmany,#checkin1,#checkout1,#total,#price,#booker,#mobile').val('');
 		return false;
 	})
+	
+	.ready(function(){
+		
+	})
+	
+	// booking 삭제
+	.on('click','#btnCancle',function(){
+		$.post('http://localhost:8080/hotel/deleteBooking',{bookcode:$('#bookcode').val()},
+				function(result){
+			console.log(result);
+			if(result=="ok") {
+				$('#selBooked option:selected').remove(); // book 리스트에서 제거.
+				$('#btnEmpty').trigger('click'); // 입력란 비우기.
+			}
+		},'text');
+		return false;
+	})
+	
 </script>
 </html>

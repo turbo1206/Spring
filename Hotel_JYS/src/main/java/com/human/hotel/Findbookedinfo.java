@@ -3,31 +3,31 @@ package com.human.hotel;
 public class Findbookedinfo {
 	private int bookcode;
 	private String roomname;
-	private String roomtype;
+	private String typename;
 	private int howmany;
 	private String checkin;
 	private String checkout;
 	private int total;
 	private String booker;
 	private String mobile;
-	private int typecode;
+	private int roomcode;
 	
 	public Findbookedinfo() {
 		
 	}
 
-	public Findbookedinfo(int bookcode, String roomname, String roomtype, int howmany, String checkin, String checkout,
-			int total, String booker, String mobile, int typecode) {
+	public Findbookedinfo(int bookcode, String roomname, String typename, int howmany, String checkin, String checkout,
+			int total, String booker, String mobile, int roomcode) {
 		this.bookcode = bookcode;
 		this.roomname = roomname;
-		this.roomtype = roomtype;
+		this.typename = typename;
 		this.howmany = howmany;
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.total = total;
 		this.booker = booker;
 		this.mobile = mobile;
-		this.typecode = typecode;
+		this.roomcode = roomcode;
 	}
 
 	public int getBookcode() {
@@ -46,12 +46,12 @@ public class Findbookedinfo {
 		this.roomname = roomname;
 	}
 
-	public String getRoomtype() {
-		return roomtype;
+	public String getTypename() {
+		return typename;
 	}
 
-	public void setRoomtype(String roomtype) {
-		this.roomtype = roomtype;
+	public void setTypename(String roomtype) {
+		this.typename = roomtype;
 	}
 
 	public int getHowmany() {
@@ -102,12 +102,12 @@ public class Findbookedinfo {
 		this.mobile = mobile;
 	}
 
-	public int getTypecode() {
-		return typecode;
+	public int getRoomcode() {
+		return roomcode;
 	}
 
-	public void setTypecode(int typecode) {
-		this.typecode = typecode;
+	public void setRoomcode(int typecode) {
+		this.roomcode = typecode;
 	}
 	
 }

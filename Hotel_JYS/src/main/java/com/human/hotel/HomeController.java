@@ -193,8 +193,7 @@ public class HomeController {
 		return "ok";
 	}
 	
-	@RequestMapping(value="/Availablerooms",method=RequestMethod.POST,
-			produces = "application/text; charset=utf-8")
+	@RequestMapping(value="/Availablerooms", method=RequestMethod.POST, produces="application/text; charset=utf-8")
 	@ResponseBody
 	public String availablerooms(HttpServletRequest hsr) {
 	iRoom room=sqlSession.getMapper(iRoom.class);
@@ -213,11 +212,11 @@ public class HomeController {
 		jo.put("howmuch", roominfo.get(i).getHowmuch());
 		jo.put("typecode", roominfo.get(i).getTypecode());
 		ja.add(jo);
-	}
-	return ja.toString();
+		}
+		return ja.toString();
 	}
 	
-	@RequestMapping(value="/findBooked", method=RequestMethod.POST)
+	@RequestMapping(value="/findBooked", method=RequestMethod.POST, produces="application/text; charset=utf-8")
 	@ResponseBody
 	public String findBooked(HttpServletRequest hsr) {
 		iBook book = sqlSession.getMapper(iBook.class);
@@ -230,14 +229,26 @@ public class HomeController {
 			JSONObject jo = new JSONObject();
 			jo.put("bookcode", Findbookedinfo.get(i).getBookcode());
 			jo.put("roomname", Findbookedinfo.get(i).getRoomname());
-			jo.put("roomtype", Findbookedinfo.get(i).getRoomtype());
+			jo.put("roomtype", Findbookedinfo.get(i).getTypename());
 			jo.put("howmany", Findbookedinfo.get(i).getHowmany());
 			jo.put("total", Findbookedinfo.get(i).getTotal());
 			jo.put("booker", Findbookedinfo.get(i).getBooker());
 			jo.put("mobile", Findbookedinfo.get(i).getMobile());
-			jo.put("typecode", Findbookedinfo.get(i).getTypecode());
+			jo.put("typecode", Findbookedinfo.get(i).getRoomcode());
+			jo.put("checkin", Findbookedinfo.get(i).getCheckin());
+			jo.put("checkout", Findbookedinfo.get(i).getCheckout());
 			ja.add(jo);
 		}
 		return ja.toString();
+	}
+	
+	@RequestMapping(value="/deleteBooking", method=RequestMethod.POST,
+			produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String deletebooking(HttpServletRequest hsr) {
+		int bookcode = Integer.parseInt(hsr.getParameter("bookcode"));
+		iBook book = sqlSession.getMapper(iBook.class);
+		book.doDeleteBooking(bookcode);
+		return "ok";
 	}
 }
