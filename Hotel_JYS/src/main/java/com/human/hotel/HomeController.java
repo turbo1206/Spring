@@ -264,7 +264,6 @@ public class HomeController {
 		String booker = hsr.getParameter("booker");
 		String mobile = hsr.getParameter("mobile");
 //		int roomcode=Integer.parseInt(hsr.getParameter("roomcode"));
-
 		book.doUpdateBooking(bookcode, howmany , booker, mobile);
 		return "ok";
 	}

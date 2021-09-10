@@ -23,53 +23,40 @@
             align-items: center;
         }
         .menu-right-item {
-            display: flex;
+        	display: flex;
             margin-left: auto;
         }
         .menu-item {
             margin-left: 10px;
         }
-        .main {
-            width: 1800px;
-            margin: 0 auto;
+        
+        .container {
+        	width: 80%;
+        	margin: 0 auto;
+        	display: flex;
         }
-        .box {
-            display: flex;
+        
+        #selBooked {
+        	display: box;
+        	widith: 150px;
         }
-        .box-items1 {
-            width: 300px;
-            height: 510px;
+        
+        .box-items1, .box-items2, .box-items3 {
+            margin: 150px 50px 0px 0px;
             border: 5px solid black;
-            margin-top: 150px;
-            margin-left: 200px;
-            margin-right: 200px;
             border-radius: 4px;
             text-align: center;
             background-color: aqua;
-        }
-        .box-items2 {
             width: 300px;
-            height: 550px;
-            border: 5px solid black;
-            margin-top: 150px;
-            margin-right: 200px;
-            border-radius: 4px;
-            text-align: center;
-            background-color: aqua;
         }
+        
         .box-items3 {
-            width: 450px;
-            height: 480px;
-            border: 5px solid black;
-            margin-top: 150px;
-            margin-right: 200px;
-            border-radius: 4px;
-            text-align: center;
-            background-color: aqua;
+            margin-right: 0px;
         }
     </style>
 </head>
 <body>
+
     <div class="menu">
         <b class="big">예약관리</b>
         <div class="menu-right-item">
@@ -78,7 +65,7 @@
         </div>
     </div>
     <div class="main">
-        <div class="box">
+        <div class="box container">
             <div class="box-items1">
                 <br><b class="small">예약기간</b><br><br>
                 <input type="date" id="checkin"><br>
@@ -136,7 +123,8 @@
                 <br><b class="small">예약 된 객실</b>
                 <br><br>
                 
-                <select id="selBooked" size="27" style="width: 420px; height: 390px; overflow: scroll;">
+                <select id="selBooked" size="10">
+                	<option value="1">객실 </option>
                 </select>
             </div>
         </div>
@@ -352,7 +340,6 @@
 						} 
 					},'text');
 		}
-		
 	})
 </script>
 </html>
