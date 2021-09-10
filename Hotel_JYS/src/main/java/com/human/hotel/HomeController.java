@@ -231,6 +231,7 @@ public class HomeController {
 			jo.put("roomname", Findbookedinfo.get(i).getRoomname());
 			jo.put("roomtype", Findbookedinfo.get(i).getTypename());
 			jo.put("howmany", Findbookedinfo.get(i).getHowmany());
+			jo.put("maxhowmany", Findbookedinfo.get(i).getMaxhowmany());
 			jo.put("total", Findbookedinfo.get(i).getTotal());
 			jo.put("booker", Findbookedinfo.get(i).getBooker());
 			jo.put("mobile", Findbookedinfo.get(i).getMobile());
@@ -249,6 +250,22 @@ public class HomeController {
 		int bookcode = Integer.parseInt(hsr.getParameter("bookcode"));
 		iBook book = sqlSession.getMapper(iBook.class);
 		book.doDeleteBooking(bookcode);
+		return "ok";
+	}
+	
+	
+	@RequestMapping(value="/updateBooking",method=RequestMethod.POST,
+			produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String updateBooking(HttpServletRequest hsr) {
+		iBook book = sqlSession.getMapper(iBook.class);
+		int bookcode = Integer.parseInt(hsr.getParameter("bookcode"));
+		int howmany = Integer.parseInt(hsr.getParameter("howmany"));
+		String booker = hsr.getParameter("booker");
+		String mobile = hsr.getParameter("mobile");
+//		int roomcode=Integer.parseInt(hsr.getParameter("roomcode"));
+
+		book.doUpdateBooking(bookcode, howmany , booker, mobile);
 		return "ok";
 	}
 }

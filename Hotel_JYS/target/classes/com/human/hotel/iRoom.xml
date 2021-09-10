@@ -31,7 +31,7 @@
    		where roomcode=#{param1}
    </update>
      <insert id="doAddBooking">
-   		insert into booking(bookcode, roomcode, person, checkin, checkout, name, moblie, price)
+   		insert into booking3(bookcode, roomcode, person, checkin, checkout, name, moblie, price)
    		values(seq_booking.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8})
    </insert>
    <select id="Availablerooms" resultType="com.human.hotel.Roominfo">
@@ -42,7 +42,7 @@
       	where type=#{param3} and roomcode not in(
       	select roomcode from room
       	INTERSECT
-      	select roomcode from booking where (checkin between #{param1} and to_date(#{param2})-1) 
+      	select roomcode from booking3 where (checkin between #{param1} and to_date(#{param2})-1) 
       	or (checkout between to_date(#{param1})+1 and to_date(#{param2})) or <![CDATA[(checkin<#{param1} and checkout>to_date(#{param2})-1))]]> 
    </select>
 </mapper>

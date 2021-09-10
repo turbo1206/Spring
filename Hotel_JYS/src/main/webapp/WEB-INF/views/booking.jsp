@@ -49,7 +49,7 @@
         }
         .box-items2 {
             width: 300px;
-            height: 520px;
+            height: 550px;
             border: 5px solid black;
             margin-top: 150px;
             margin-right: 200px;
@@ -126,7 +126,8 @@
                 <input type="text" size="10" id="booker">
                 <br><br><b class="small" >모바일</b>
                 <input type="text" size="15" id="mobile">
-                <br><br><br><br>
+                <br><br><input type="button" value="수정" id="btnChange">
+                <br><br>
                	<input type="button" value="예약완료" id="btnBook">
                	<input type="button" value="비우기" id="btnEmpty">
                	<input type="button" value="예약취소" id="btnCancle">
@@ -135,7 +136,7 @@
                 <br><b class="small">예약 된 객실</b>
                 <br><br>
                 
-                <select id="selBooked" size="27" style="width: 420px; height: 390px;">
+                <select id="selBooked" size="27" style="width: 420px; height: 390px; overflow: scroll;">
                 </select>
             </div>
         </div>
@@ -161,11 +162,12 @@
 			});
 		},'json');
 		$.post("http://localhost:8080/hotel/findBooked",{checkin:checkin, checkout:checkout, typecode:typecode},function(result){
-			alert('')
+			//alert('')
 			console.log(result);
+			$('#selBooked').empty();
 			$.each(result, function(ndx,value){
 				str='<option value="'+value['bookcode']+'">'+value['roomname']+','+
-				value['roomtype']+','+value['howmany']+','+value['total']+','+value['booker']+','+value['mobile']+','+value['checkin']+','+value['checkout']+'</option>';
+				value['roomtype']+','+value['howmany']+','+value['maxhowmany']+','+value['total']+','+value['booker']+','+value['mobile']+','+value['checkin']+','+value['checkout']+'</option>';
 				$('#selBooked').append(str);
 				/* str='<option value="${value['roomcode']}">${value['roomname']},${value}['typename']},'+
 				'${value['howmany']},${value['howmuch']}</option>'; */ 
@@ -185,7 +187,6 @@
 		//console.log($.trim(ar[3]));
 		$('#checkin1').val($('#checkin').val());
 		$('#checkout1').val($('#checkout').val());
-		
 		$('#checkin1,#checkout1').trigger('change');
 		//$('#total').val(500000);
 		let checkin = $('#checkin1').val();
@@ -293,8 +294,23 @@
 		return false;
 	})
 	
-	.ready(function(){
-		
+	// 예약 된 객실 정보 표시
+	.on('click','#selBooked option',function(){
+		let str=$(this).text(); // selBooked option 데이터를 텍스트로 str 변수로 선언.
+		let ar=str.split(',');
+		var str2 = $('#selBooked').val(); // value에서 typecode 가져오기
+		console.log(str2);
+		$('#bookcode').val(str2);
+		$('#roomname').val($.trim(ar[0]));
+		$('#selType option:contains("'+$.trim(ar[1])+'")').prop('selected','true');
+		$('#howmany').val($.trim(ar[2]));
+		$('#max_howmany').val($.trim(ar[3]));
+		$('#total').val($.trim(ar[4]));
+		$('#booker').val($.trim(ar[5]));
+		$('#mobile').val($.trim(ar[6]));
+		$('#checkin1').val($.trim(ar[7]));
+		$('#checkout1').val($.trim(ar[8]));
+		return false;
 	})
 	
 	// booking 삭제
@@ -305,10 +321,38 @@
 			if(result=="ok") {
 				$('#selBooked option:selected').remove(); // book 리스트에서 제거.
 				$('#btnEmpty').trigger('click'); // 입력란 비우기.
+				$('#btnFind').trigger('click'); // 예약가능객실 조회 자동으로 누르기
 			}
 		},'text');
 		return false;
 	})
 	
+	.on('click','#btnChange',function(){
+//		let roomname=$('#txtName').val();
+//		let roomtype=$('#selType').val();
+//		let howmany=$('#txtNum').val();
+//		let howmuch=$('#txtPrice').val();
+		let howmany=$('#howmany').val();
+		let booker=$('#booker').val();
+		let mobile=$('#mobile').val();
+		console.log(howmany);
+		console.log(booker);
+		console.log(mobile);
+		// validation (유효성 검사)
+		if( howmany == '' || booker == '' || mobile == '') {
+			alert('누락 된 값이 있습니다.');
+			return false;
+		} else {
+			$.post('http://localhost:8080/hotel/updateBooking',
+					{bookcode:$('#bookcode').val(), howmany:howmany, booker:booker, mobile:mobile},
+					function(result) {
+						if(result=='ok'){
+							$('#btnEmpty').trigger('click'); // 입력란 비우기.
+							$('#btnFind').trigger('click'); // 예약가능객실 조회 자동으로 누르기
+						} 
+					},'text');
+		}
+		
+	})
 </script>
 </html>
