@@ -4,7 +4,11 @@
 <html>
 <head>
 	<title>Home</title>
+	<style>
+		
+	</style>
 </head>
+
 <body>
 	<form method="post" action="/hotel/check_user" id="frmlogin">
 	사용자ID: <input type="text" name="userid"><br>
@@ -15,7 +19,7 @@
 	</form>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
-	$(document)
+/*	$(document)
 	.on('submit','#frmlogin', function(){
 		let pstr=$.trim($('input[name=userid]').val());
 		$('input[name=userid]').val(pstr);
@@ -29,7 +33,7 @@
 			alert('비밀번호를 입력하시오.');
 			return false;
 		}
-	})
+	}) */
 </script>	
 </body>
 </html>

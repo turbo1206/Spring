@@ -40,23 +40,20 @@
         	display: box;
         	widith: 150px;
         }
-        
         .box-items1, .box-items2, .box-items3 {
             margin: 150px 50px 0px 0px;
             border: 5px solid black;
             border-radius: 4px;
             text-align: center;
-            background-color: aqua;
+            /* background-color: aqua; */
             width: 300px;
         }
-        
         .box-items3 {
             margin-right: 0px;
         }
     </style>
 </head>
 <body>
-
     <div class="menu">
         <b class="big">예약관리</b>
         <div class="menu-right-item">
@@ -122,9 +119,7 @@
             <div class="box-items3">
                 <br><b class="small">예약 된 객실</b>
                 <br><br>
-                
                 <select id="selBooked" size="10">
-                	<option value="1">객실 </option>
                 </select>
             </div>
         </div>

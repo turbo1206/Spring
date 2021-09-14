@@ -25,6 +25,19 @@
      .menu-item {
          	margin-left: 10px;
      }
+     .container {
+        	width: 80%;
+        	margin: 0 auto;
+        	display: flex;
+     }
+     .box1, .box2 {
+            margin: 150px 50px 0px 200px;
+            border: 5px solid black;
+            border-radius: 4px;
+            text-align: center;
+            /* background-color: aqua; */
+            width: 300px;
+     }
     </style>
 </head>
 <body>
@@ -35,58 +48,35 @@
             <div class="menu-item"><a href="logout"><b class="small">로그아웃</b></a></div>
         </div>
     </div>
-    <br><br>
-    <table border=1>
-    	<tr>
-    		<td>
-    			<select id="selRoom" size="10" style="width: 250px;">
-	 			<%-- 	<c:forEach items="${list}" var="room">
-    					<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
-    				</c:forEach>  --%>
-    			</select>
-   			</td>
-   			<td>
-   				<table>
-   				<tr>
-   					<td align="right">객실명</td>
-   					<td>
-   						<input type="text" id="txtName">
-   						<input type="hidden" id="roomcode">
-   					</td>
-   				</tr>
-   				<tr>
-   					<td align="right">타입</td>
-   					<td>
-   						<select id="selType" size="5" style="width: 120px;">
-						<c:forEach items="${typelist}" var="type">
-    						<option value="${type.typecode}">${type.name}</option>
-    					</c:forEach>
-   						</select>
-   					</td>
-   				</tr>
-   				<tr>
-   					<td align="right">최대숙박인원</td>
-   					<td>
-   						<input type="text" id="txtNum">
-   					</td>
-   				</tr>
-   				<tr>
-   					<td align="right">1박 가격</td>
-   					<td>
-   						<input type="text" id="txtPrice">
-   					</td>
-   				</tr>
-   				<tr>
-   					<td colspan="2" align="center">
-   						<input type="button" value="등록" id="btnAdd">&nbsp;
-   						<input type="button" value="삭제" id="btnDelete">&nbsp;
-   						<input type="button" value="취소" id="btnEmpty">
-   					</td>
-   				</tr>
-   				</table>
-   			</td>
-    	</tr>
-    </table>
+    <div class="main">
+    	<div class="container">
+    		<div class="box1">
+    			<select id="selRoom" size="20" style="width: 250px;">
+					<%-- 	<c:forEach items="${list}" var="room">
+					<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
+					</c:forEach>  --%>
+			</select>
+    		</div>
+    		<div class="box2">
+	    		<br><br>객실명
+				<input type="text" id="txtName">
+				<input type="hidden" id="roomcode">
+				<br><br>타입
+				<select id="selType" size="5" style="width: 120px;">
+					<c:forEach items="${typelist}" var="type">
+						<option value="${type.typecode}">${type.name}</option>
+					</c:forEach>
+				</select>
+				<br><br>최대숙박인원
+				<input type="text" id="txtNum">
+				<br><br>1박 가격
+				<input type="text" id="txtPrice"><br><br>
+				<input type="button" value="등록" id="btnAdd">&nbsp;
+				<input type="button" value="삭제" id="btnDelete">&nbsp;
+				<input type="button" value="취소" id="btnEmpty">
+    		</div>
+    	</div>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
