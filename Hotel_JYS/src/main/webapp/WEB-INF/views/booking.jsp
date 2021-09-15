@@ -9,16 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약관리</title>
     <style>
-    	
+    	body {
+    		background-image: url("./resources/img/booking.jpg");
+    	}
         .big {
             font-size: 30px;
+            color:white;
         }
         .small {
         	font:bold;
+       	 	color:white;
+        }
+        .small_other{
+        	font:bold;
+        	color:black;
+        }
+        .menu_side{
+        	color:white;
         }
         .menu {
             height: 70px;
-            border-bottom : 1px solid black;
             display: flex;
             align-items: center;
         }
@@ -38,11 +48,15 @@
         
         #selBooked {
         	display: box;
-        	widith: 150px;
+        	width: 300px;
+        	height: 500px;
+        	overflow-x: scroll; 
         }
         .box-items1, .box-items2, .box-items3 {
+        	opacity: 0.9;
+        	color:white;
             margin: 150px 50px 0px 0px;
-            border: 5px solid black;
+            border: 5px solid white;
             border-radius: 4px;
             text-align: center;
             /* background-color: aqua; */
@@ -50,6 +64,19 @@
         }
         .box-items3 {
             margin-right: 0px;
+            background-color: white;
+        }
+        #btnBook,#btnEmpty,#btnCancle,#btnChange{
+        	margin-top: 30px;
+			font-weight: 600;
+		   	width: 80px;
+		    height: 40px;
+		   	padding: 10px;
+		    margin-left: 10px;
+		   	border: none;
+		   	font-size: 15px;
+		    border-radius: 10%;
+		   	background-color: white;
         }
     </style>
 </head>
@@ -57,8 +84,8 @@
     <div class="menu">
         <b class="big">예약관리</b>
         <div class="menu-right-item">
-            <div class="menu-item"><a href="room"><b class="small">객실관리</b></a></div>
-            <div class="menu-item"><a href="logout"><b class="small">로그아웃</b></a></div>
+            <div class="menu-item"><a href="room"><b class="menu_side">객실관리</b></a></div>
+            <div class="menu-item"><a href="logout"><b class="menu_side">로그아웃</b></a></div>
         </div>
     </div>
     <div class="main">
@@ -110,14 +137,14 @@
                 <input type="text" size="10" id="booker">
                 <br><br><b class="small" >모바일</b>
                 <input type="text" size="15" id="mobile">
-                <br><br><input type="button" value="수정" id="btnChange">
-                <br><br>
+                <br><input type="button" value="수정" id="btnChange">
+                <br>
                	<input type="button" value="예약완료" id="btnBook">
                	<input type="button" value="비우기" id="btnEmpty">
                	<input type="button" value="예약취소" id="btnCancle">
             </div>
             <div class="box-items3">
-                <br><b class="small">예약 된 객실</b>
+                <br><b class="small_other">예약 된 객실</b>
                 <br><br>
                 <select id="selBooked" size="10">
                 </select>

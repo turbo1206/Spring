@@ -9,12 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>객실관리</title>
     <style>
+     body {
+    	background-image: url("./resources/img/room.jpg");
+	 }
      .big {
       		font-size: 30px;
+   		 	color:white;
+     }
+     .small {
+        	font:bold;
+       	 	color:white;
+     }
+     .small1 {
+        	font:bold;
+       	 	color:balck;
      }
      .menu {
          	height: 70px;
-         	border-bottom : 1px solid black;
          	display: flex;
          	align-items: center;
      }
@@ -31,13 +42,26 @@
         	display: flex;
      }
      .box1, .box2 {
-            margin: 150px 50px 0px 200px;
-            border: 5px solid black;
+     		
+            margin: 150px 50px 0px 100px;
+            border: 3px solid orange;
             border-radius: 4px;
             text-align: center;
             /* background-color: aqua; */
             width: 300px;
      }
+     #btnAdd,#btnDelete,#btnEmpty{
+        	margin-top: 30px;
+			font-weight: 600;
+		   	width: 80px;
+		    height: 40px;
+		   	padding: 10px;
+		    margin-left: 10px;
+		   	border: none;
+		   	font-size: 15px;
+		    border-radius: 10%;
+		   	background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -51,25 +75,25 @@
     <div class="main">
     	<div class="container">
     		<div class="box1">
-    			<select id="selRoom" size="20" style="width: 250px;">
+    			<select id="selRoom" size="20" style="width: 250px;opacity: 0.9;">
 					<%-- 	<c:forEach items="${list}" var="room">
 					<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
 					</c:forEach>  --%>
 			</select>
     		</div>
     		<div class="box2">
-	    		<br><br>객실명
+	    		<br><br><b class="small1">객실명</b>
 				<input type="text" id="txtName">
 				<input type="hidden" id="roomcode">
-				<br><br>타입
+				<br><br><b class="small1">타입</b>
 				<select id="selType" size="5" style="width: 120px;">
 					<c:forEach items="${typelist}" var="type">
 						<option value="${type.typecode}">${type.name}</option>
 					</c:forEach>
 				</select>
-				<br><br>최대숙박인원
+				<br><br><b class="small1">최대숙박인원</b>
 				<input type="text" id="txtNum">
-				<br><br>1박 가격
+				<br><br><b class="small1">1박 가격</b>
 				<input type="text" id="txtPrice"><br><br>
 				<input type="button" value="등록" id="btnAdd">&nbsp;
 				<input type="button" value="삭제" id="btnDelete">&nbsp;
