@@ -33,7 +33,7 @@
 		    width:300px;
 		    height:300px;
 		    position:absolute;
-		    left:630px;
+		    left:830px;
 		    top:400px;
 		    margin-left:-150px;
 		    margin-top:-150px;

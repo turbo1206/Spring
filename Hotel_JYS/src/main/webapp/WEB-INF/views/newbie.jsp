@@ -29,7 +29,7 @@
 		    width:300px;
 		    height:300px;
 		    position:absolute;
-		    left:630px;
+		    left:830px;
 		    top:400px;
 		    margin-left:-150px;
 		    margin-top:-150px;
@@ -57,8 +57,8 @@
 		<br>
 		<b>실명</b> <input type="text" name="realname" required><br><br>
 		<b>ID</b> <input type="text" name="userid" required><br><br>
-		<b>비밀번호</b> <input type="password" name="passcode1" required><br><br>
-		<b>비밀번호 확인</b> <input type="password" name="passcode2" required>
+		<b>비밀번호</b> <input type="password" name="passcode1"><br><br>
+		<b>비밀번호 확인</b> <input type="password" name="passcode2">
 		<br><br><input type="submit" value="회원가입" class="btnNewbie">
 		<a href="/hotel/" class="btnCancle">취소</a>
 		</form>
