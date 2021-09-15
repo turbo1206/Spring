@@ -43,7 +43,7 @@
      }
      .box1, .box2 {
      		
-            margin: 150px 50px 0px 100px;
+            margin: 150px 50px 0px 200px;
             border: 3px solid orange;
             border-radius: 4px;
             text-align: center;

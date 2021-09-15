@@ -57,9 +57,9 @@
 		<br>
 		<b>실명</b> <input type="text" name="realname" required><br><br>
 		<b>ID</b> <input type="text" name="userid" required><br><br>
-		<b>비밀번호</b> <input type="password" name="passcode1"><br><br>
-		<b>비밀번호 확인</b> <input type="password" name="passcode2">
-		<br><br><input type="submit" value="회원가입" class="btnNewbie">
+		<b>비밀번호</b> <input type="password" name="passcode1" required><br><br>
+		<b>비밀번호 확인</b> <input type="password" name="passcode2" required>
+		<br><br><input type="submit" value="회원가입" id="btnNewbie" class="btnNewbie">
 		<a href="/hotel/" class="btnCancle">취소</a>
 		</form>
 	</div>
@@ -69,8 +69,9 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
 $(document)
-.on('click','#frmlogin',function(){
-	if($('#passcode1').val()!=$('#passcode2').val()) {
+.on('click','#btnNewbie',function(){
+	if($('input[name=passcode1]').val()!=$('input[name=passcode2]').val())
+	/*if($('#passcode1').val()!=$('#passcode2').val())*/ {
 		alert("비밀번호가 일치하지 않습니다.");
 		return false;
 	}

@@ -55,7 +55,7 @@
         .box-items1, .box-items2, .box-items3 {
         	opacity: 0.9;
         	color:white;
-            margin: 150px 50px 0px 0px;
+            margin: 150px 200px 0px 0px;
             border: 5px solid white;
             border-radius: 4px;
             text-align: center;
@@ -266,6 +266,7 @@
 						$('#booker').val()+','+$('#mobile').val()+'</option>';
 						$('#selBooked').append(pstr);
 						$('#btnEmpty').trigger('click');
+						$('#btnFind').trigger('click');
 					} else {
 						alert('예약이 완료되지 않았습니다.(DBinsert오류)');
 					}
