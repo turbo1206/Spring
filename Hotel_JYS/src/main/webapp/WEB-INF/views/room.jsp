@@ -75,7 +75,7 @@
     <div class="main">
     	<div class="container">
     		<div class="box1">
-    			<select id="selRoom" size="20" style="width: 250px;opacity: 0.9;">
+    			<select id="selRoom" size="20" style="width: 250px;opacity: 0.8;">
 					<%-- 	<c:forEach items="${list}" var="room">
 					<option value="${room.roomcode}">${room.roomname}, ${room.typename}, ${room.howmany}, ${room.howmuch}</option>
 					</c:forEach>  --%>

@@ -29,7 +29,7 @@
 		    width:300px;
 		    height:300px;
 		    position:absolute;
-		    left:950px;
+		    left:955px;
 		    top:400px;
 		    margin-left:-150px;
 		    margin-top:-150px;
@@ -51,7 +51,7 @@
 <body>
 <div id="wrap">
 	<br><br><br>
-	<h1>회원가입을 하십시요.</h1>
+	<h1>회원가입</h1>
 	<div class="box">
 		<form method="POST" action="signin" id="frmlogin">
 		<br>
