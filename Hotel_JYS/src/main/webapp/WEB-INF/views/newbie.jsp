@@ -29,7 +29,7 @@
 		    width:300px;
 		    height:300px;
 		    position:absolute;
-		    left:830px;
+		    left:950px;
 		    top:400px;
 		    margin-left:-150px;
 		    margin-top:-150px;

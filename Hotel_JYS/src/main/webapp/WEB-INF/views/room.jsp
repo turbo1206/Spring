@@ -43,7 +43,7 @@
      }
      .box1, .box2 {
      		
-            margin: 150px 50px 0px 200px;
+            margin: 150px 50px 0px 250px;
             border: 3px solid orange;
             border-radius: 4px;
             text-align: center;
@@ -95,8 +95,8 @@
 				<input type="text" id="txtNum">
 				<br><br><b class="small1">1박 가격</b>
 				<input type="text" id="txtPrice"><br><br>
-				<input type="button" value="등록" id="btnAdd">&nbsp;
-				<input type="button" value="삭제" id="btnDelete">&nbsp;
+				<input type="button" value="등록" id="btnAdd">
+				<input type="button" value="삭제" id="btnDelete">
 				<input type="button" value="취소" id="btnEmpty">
     		</div>
     	</div>

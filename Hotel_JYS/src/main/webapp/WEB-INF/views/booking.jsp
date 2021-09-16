@@ -55,7 +55,7 @@
         .box-items1, .box-items2, .box-items3 {
         	opacity: 0.9;
         	color:white;
-            margin: 150px 200px 0px 0px;
+            margin: 150px 200px 0px 50px;
             border: 5px solid white;
             border-radius: 4px;
             text-align: center;
